@@ -1,5 +1,9 @@
 $ = jQuery
 $ ->
+  $('#time').change ->
+    $('#stop').click()
+    $('#erase').click
+
   $('#start').click (e) ->
     e.preventDefault()
 
