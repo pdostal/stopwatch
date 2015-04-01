@@ -1,7 +1,8 @@
 $ = jQuery
-$ ->
+$(document).ready ->
   $('#time').change ->
     $('#stop').click()
+    $('#ResTime').text $('#time').val()
     $('#erase').click
 
   $('#start').click (e) ->
