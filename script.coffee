@@ -1,6 +1,15 @@
 $ = jQuery
 $(document).ready ->
+	clock = new FlipClock $('#clock'),
+    clockFace: 'Counter'
+    autoStart: false
+    CountDown: true
+    callbacks:
+      interval: ->
+        clock.decrement()
+        
   $('#ResTime').text '???'
+  clock.setTime '000'
 
   $('#time').change ->
     $('#erase').click
@@ -26,11 +35,3 @@ $(document).ready ->
     $('#time').val ''
     $('#ResTime').text '???'
     clock.setTime '000'
-
-  	clock = new FlipClock $('#clock'),
-      clockFace: 'Counter'
-      autoStart: false
-      CountDown: true
-      callbacks:
-        interval: ->
-          clock.decrement()
