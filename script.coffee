@@ -1,30 +1,36 @@
 $ = jQuery
 $(document).ready ->
+  $('#ResTime').text '???'
+
   $('#time').change ->
-    $('#stop').click()
-    $('#ResTime').text $('#time').val()
-    clock.increment
     $('#erase').click
+    clock.setTime $('#time').val()
+    $('#ResTime').text $('#time').val()
 
   $('#start').click (e) ->
     e.preventDefault()
+    clock.start()
 
   $('#pause').click (e) ->
     e.preventDefault()
+    clock.stop()
 
   $('#stop').click (e) ->
     e.preventDefault()
+    clock.stop()
+    clock.setTime $('#time').val()
 
   $('#erase').click (e) ->
     e.preventDefault()
+    clock.stop()
+    $('#time').val ''
+    $('#ResTime').text '???'
+    clock.setTime '000'
 
   	clock = new FlipClock $('#clock'),
       clockFace: 'Counter'
       autoStart: false
+      CountDown: true
       callbacks:
         interval: ->
           clock.decrement()
-
-    clock.setTime(220880)
-    clock.setCountdown(true)
-    clock.start()
